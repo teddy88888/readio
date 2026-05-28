@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Readio - Audiobook Indonesia</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#beranda">
+          <span class="brand-mark">R</span>
+          <span><strong>Readio</strong><small>Audiobook Indonesia</small></span>
+        </a>
+        <nav class="side-nav">
+          <a class="active" href="#beranda" data-nav="beranda">Beranda</a>
+          <a href="#katalog" data-nav="katalog">Katalog</a>
+          <a href="#langganan" data-nav="langganan">Langganan</a>
+          <a href="#wishlist" data-nav="wishlist">Wishlist</a>
+          <a href="#akun" data-nav="akun">Akun</a>
+          <a href="#perpustakaan" data-nav="perpustakaan">Perpustakaan</a>
+        </nav>
+        <section class="membership-card">
+          <p>Paket aktif</p>
+          <strong id="planLabel">Readio Plus</strong>
+          <span id="creditLabel">1 kredit tersedia</span>
+          <button class="text-button" data-checkout-plan="plus">Perpanjang QRIS</button>
+        </section>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <label class="search-box">
+            <span>Cari</span>
+            <input id="searchInput" type="search" placeholder="Judul, penulis, narator" />
+          </label>
+          <div class="top-actions">
+            <div class="account-pill"><span id="memberName">Nadia</span><strong id="creditCount">1 kredit</strong></div>
+            <button class="icon-button" id="libraryButton">Rak</button>
+            <button class="cart-button" id="cartButton">Keranjang <span id="cartCount">0</span></button>
+          </div>
+        </header>
+
+        <section class="featured-band" id="beranda">
+          <div class="featured-copy">
+            <p class="eyebrow">Pilihan editor</p>
+            <h1 id="featuredTitle">Laut Bercerita</h1>
+            <p id="featuredMeta">Leila S. Chudori - Narator: Ario Bayu - 13 jam 22 menit</p>
+            <p id="featuredDesc">Novel sejarah yang dibawakan dengan ritme sinematik untuk perjalanan panjang dan sesi dengar malam hari.</p>
+            <div class="featured-actions">
+              <button class="primary-button" id="featuredBuy">Beli QRIS</button>
+              <button class="secondary-button" id="featuredCredit">Pakai kredit</button>
+              <button class="secondary-button" id="featuredSample">Dengar contoh</button>
+            </div>
+          </div>
+          <img id="featuredCover" src="assets/cover-laut-bercerita.png" alt="Sampul audiobook" />
+        </section>
+
+        <section class="section-row" id="katalog">
+          <div><p class="eyebrow">Katalog</p><h2>Audiobook populer</h2></div>
+          <div class="segmented-control">
+            <button class="active" data-category="Semua">Semua</button>
+            <button data-category="Novel">Novel</button>
+            <button data-category="Bisnis">Bisnis</button>
+            <button data-category="Pengembangan Diri">Diri</button>
+            <button data-category="Anak">Anak</button>
+          </div>
+        </section>
+        <section class="catalog-grid" id="catalogGrid"></section>
+
+        <section class="subscription-band" id="langganan">
+          <div>
+            <p class="eyebrow">Langganan</p>
+            <h2>Readio Plus</h2>
+            <p>Dapatkan 1 kredit audiobook tiap bulan, akses katalog Plus, dan harga anggota untuk pembelian tambahan.</p>
+          </div>
+          <div class="plan-panel">
+            <span class="plan-price">Rp79.000<span>/bulan</span></span>
+            <ul>
+              <li>1 kredit bulanan</li>
+              <li>Perpustakaan dan progres dengar</li>
+              <li>Bayar dengan QRIS bank atau e-wallet Indonesia</li>
+            </ul>
+            <button class="primary-button full" data-checkout-plan="plus">Bayar QRIS</button>
+          </div>
+        </section>
+
+        <section class="wishlist-panel" id="wishlist">
+          <div class="section-row compact">
+            <div><p class="eyebrow">Daftar Keinginan</p><h2>Simpan untuk nanti</h2></div>
+            <button class="secondary-button small" id="wishlistClearButton">Kosongkan</button>
+          </div>
+          <div class="wishlist-list" id="wishlistList"></div>
+        </section>
+
+        <section class="account-panel" id="akun">
+          <div class="section-row compact">
+            <div><p class="eyebrow">Akun</p><h2>Member Readio</h2></div>
+            <button class="secondary-button small" id="accountSyncButton">Perbarui</button>
+          </div>
+          <div class="account-grid">
+            <article><span>Nama</span><strong id="accountName">Nadia Pratama</strong></article>
+            <article><span>Paket</span><strong id="accountPlan">Readio Plus</strong></article>
+            <article><span>Kredit</span><strong id="accountCredits">1</strong></article>
+            <article><span>Transaksi</span><strong id="accountOrders">0</strong></article>
+          </div>
+          <div class="order-history" id="orderHistory"></div>
+        </section>
+
+        <section class="library-panel" id="perpustakaan">
+          <div class="section-row compact">
+            <div><p class="eyebrow">Perpustakaan Saya</p><h2>Lanjutkan mendengar</h2></div>
+            <button class="secondary-button small" id="syncButton">Sinkronkan</button>
+          </div>
+          <div class="library-list" id="libraryList"></div>
+        </section>
+      </main>
+    </div>
+
+    <aside class="player-bar">
+      <img id="playerCover" src="assets/cover-laut-bercerita.png" alt="" />
+      <div><strong id="playerTitle">Belum ada contoh diputar</strong><span id="playerMeta">Pilih audiobook untuk cuplikan.</span><div class="progress-track"><span id="playerProgress"></span></div></div>
+      <button class="icon-button" id="playButton">Putar</button>
+    </aside>
+
+    <dialog class="modal" id="detailModal"><form method="dialog" class="modal-shell"><button class="close-button">Tutup</button><div id="detailContent"></div></form></dialog>
+    <dialog class="modal" id="cartModal"><form method="dialog" class="modal-shell narrow"><button class="close-button">Tutup</button><h2>Keranjang</h2><div id="cartItems"></div><div class="checkout-total"><span>Total</span><strong id="cartTotal">Rp0</strong></div><button type="button" class="primary-button full" id="checkoutButton">Bayar QRIS</button></form></dialog>
+    <dialog class="modal" id="checkoutModal">
+      <form method="dialog" class="modal-shell payment-shell">
+        <button class="close-button">Tutup</button>
+        <div class="payment-grid">
+          <div>
+            <p class="eyebrow">Pembayaran QRIS</p>
+            <h2 id="paymentTitle">Selesaikan pembayaran</h2>
+            <p class="payment-copy">Pindai QRIS dengan aplikasi bank atau e-wallet Indonesia. Setelah sukses, konten masuk ke akun.</p>
+            <dl class="payment-summary">
+              <div><dt>Merchant</dt><dd>Readio Digital</dd></div>
+              <div><dt>Nominal</dt><dd id="paymentAmount">Rp0</dd></div>
+              <div><dt>Transaksi</dt><dd id="paymentIdLabel">QRIS Demo</dd></div>
+              <div><dt>Berlaku</dt><dd id="paymentTimer">14:59</dd></div>
+            </dl>
+            <button type="button" class="primary-button full" id="confirmPaymentButton">Simulasikan pembayaran berhasil</button>
+          </div>
+          <div class="qris-panel"><img src="assets/qris-demo.png" alt="QRIS demo Readio" /><span>QRIS Demo - NMID ID102326890001</span></div>
+        </div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
